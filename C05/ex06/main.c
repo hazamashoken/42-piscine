@@ -5,38 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 12:18:29 by tliangso          #+#    #+#             */
-/*   Updated: 2022/06/20 13:08:56 by tliangso         ###   ########.fr       */
+/*   Created: 2022/06/16 14:57:15 by tliangso          #+#    #+#             */
+/*   Updated: 2022/06/16 15:03:26 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_iterative_power(int nb, int power);
+int		ft_is_prime(int nb);
+void	test(int nb);
 
 int	main(void)
 {
-	printf("%d\n", ft_iterative_power(0, 0));
-	printf("%d\n", ft_iterative_power(10, -2));
-	printf("%d\n", ft_iterative_power(10, 2));
-	printf("%d\n", ft_iterative_power(1, 0));
-	printf("%d\n", ft_iterative_power(0, 1));
-	printf("%d\n", ft_iterative_power(-2, 3));
+	test(5);
+	test(10);
+	test(1);
+	test(2);
 	return (0);
 }
 
-int	ft_iterative_power(int nb, int power)
+void	test(int nb)
+{
+	if (ft_is_prime(nb))
+		printf("%d is prime num\n", nb);
+	else
+		printf("%d is not prime num\n", nb);
+}
+
+int	ft_is_prime(int nb)
 {
 	int	i;
-	int	n;
 
-	n = nb;
-	i = 1;
-	if (power < 0)
+	i = 2;
+	if (nb < 2)
 		return (0);
-	if (power == 0)
-		return (1);
-	while (++i <= power)
-		nb *= n;
-	return (nb);
+	while (i < nb)
+	{
+		if (nb % i == 0)
+			return (0);
+		i++;
+	}
+	return (1);
 }

@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_power.c                               :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 12:24:04 by tliangso          #+#    #+#             */
-/*   Updated: 2022/06/17 21:54:54 by tliangso         ###   ########.fr       */
+/*   Created: 2022/06/16 14:39:35 by tliangso          #+#    #+#             */
+/*   Updated: 2022/06/19 09:22:57 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_power(int nb, int power)
+int	ft_sqrt(int nb)
 {
-	if (power == 0)
-		return (1);
-	if (power < 0)
+	int	n1;
+	int	n2;
+
+	if (nb < 0)
 		return (0);
-	return (nb * ft_recursive_power(nb, power - 1));
+	if (nb == 0 || nb == 1)
+		return (nb);
+	n1 = nb / 2;
+	n2 = (n1 + nb / n1) / 2;
+	while (n2 < n1)
+	{
+		n1 = n2;
+		n2 = (n1 + nb / n1) / 2;
+	}
+	if (n1 * n1 != nb)
+		return (0);
+	return (n1);
 }
